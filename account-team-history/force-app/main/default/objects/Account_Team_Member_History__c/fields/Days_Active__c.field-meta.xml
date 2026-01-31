@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_Active__c</fullName>
+    <description>Computes the number of active days the user has been in the assigned role</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Active_To__c), TODAY() - Active_From__c, Active_To__c - Active_From__c )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Number of days the user was assigned to the role for the account</inlineHelpText>
+    <label>Days Active</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

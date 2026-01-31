@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Added_By__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Indicates the user who added the Team Member. Used in conjunction with the Active From date field to create a clear who/when audit line for Account Team Member additions</description>
+    <label>Added By</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Account_Team_Member_Histories1</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

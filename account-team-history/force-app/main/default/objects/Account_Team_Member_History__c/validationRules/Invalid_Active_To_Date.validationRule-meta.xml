@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invalid_Active_To_Date</fullName>
+    <active>true</active>
+    <description>Checks to see if the Active To date field is set to a value earlier than that Active From date. A record can not cease before it began.</description>
+    <errorConditionFormula>AND(NOT(ISBLANK(Active_To__c)), Active_To__c &lt; Active_From__c)</errorConditionFormula>
+    <errorMessage>Active To date can not occur before Active From date</errorMessage>
+</ValidationRule>
