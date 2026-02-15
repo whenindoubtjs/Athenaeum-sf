@@ -9,6 +9,6 @@ trigger AccountTeamMemberTrigger on AccountTeamMember (after insert, before dele
         handler.afterInsert(Trigger.new, Trigger.newMap);
     }
     if (Trigger.isBefore && Trigger.isDelete) {
-        //handler.beforeDelete(Trigger.old);
+        handler.beforeDelete(Trigger.old);
     }
 }
