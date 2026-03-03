@@ -1,3 +1,15 @@
+/*
+    Selector class for Account Team Member History-related queries that can be included in any service or trigger handler classes
+    This class is virtual to allow for easy mocking during unit tests of classes that depend on it
+
+    Field Selection:
+    This selector uses a single field set for simplicity. For most use cases (querying specific users by ID),
+    the performance difference is negligible.
+    
+    If you need to optimize for large datasets, large volume of fields to retrieve
+    or have distinct use cases requiring different field sets, consider refactoring to use multiple
+    field sets (base fields + extended fields pattern).
+*/
 public virtual with sharing class AccountTeamMemberHistorySelector {
 
     //Default constructor

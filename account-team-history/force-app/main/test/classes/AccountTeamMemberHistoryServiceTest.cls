@@ -150,4 +150,45 @@ public with sharing class AccountTeamMemberHistoryServiceTest {
         // Verify creation; we expect 200 records to have been created successfully
         System.assertEquals(200, createdRecords.size());
     }    
+
+    /**
+     * Negative test to verify that the inactivateHistoryRecords method in AccountTeamMemberHistoryService correctly handles the scenario 
+     * where no history records are found for the given AccountTeamMember records.
+     */
+    @isTest
+    static void negativeNoAccountTeamMemberHistoryFound() {
+        // ============================================
+        // Setup Test Data
+        // ============================================
+
+        // Test structure should be familiar by now, so the comments are gonna get shorter.
+        // Create a fake AccountTeamMember record in memory with a fake ID, and insert a test Account to associate with it, then use the mock selector
+        // to return an empty map simulating no history records found for that ATM and assert the defensive check works.
+        Id fakeAtmId = TestDataFactory.generateFakeId(AccountTeamMember.SObjectType, true);
+        Id testUserId = UserInfo.getUserId();
+        Id testAccountId = Database.insert(TestDataFactory.createAccount('Test')).getId();
+        
+        AccountTeamMember atm = TestDataFactory.createAccountTeamMember(fakeAtmId, testUserId, testAccountId, 'Sales Rep');
+        
+        MockUserSelector mockUserSelector = new MockUserSelector();
+        MockAccountTeamMemberHistorySelector mockAtmHistorySelector = new MockAccountTeamMemberHistorySelector();
+        // Mock returns EMPTY map - simulates no history records found
+        mockAtmHistorySelector.setReturnValue(new Map<Id, Account_Team_Member_History__c>());
+        
+        AccountTeamMemberHistoryService service = new AccountTeamMemberHistoryService(mockUserSelector,mockAtmHistorySelector);
+        
+        // ============================================
+        // Begin Test Context
+        // ============================================
+        Test.startTest();
+        // Should not throw an error - defensive check should handle it
+        service.inactivateHistoryRecords(new List<AccountTeamMember>{atm});
+        Test.stopTest();
+        
+        // Verify no records were updated (since none were found)
+        List<Account_Team_Member_History__c> records = [
+            SELECT Id FROM Account_Team_Member_History__c
+        ];
+        System.assertEquals(0, records.size(), 'Expected no records to be updated');
+    }
 }
