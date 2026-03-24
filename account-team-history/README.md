@@ -19,37 +19,10 @@ The asset comes with a Manifest file (/manifest/AccountTeamMemberHistoryAsset.xm
 
 Deploy the asset via SF CLI as you would any other manifest-based asset. Or you can manually install the individual components as desired.
 
-
-
-
-### Prerequisites
-
-- Custom object: `Account_Team_Member_History__c` with the following fields:
-  - `Account__c` (Master-Detail to Account)
-  - `Team_Member__c` (Lookup to User) 
-  - `Team_Member_Role__c` (Text)
-  - `Status__c` (Picklist: Active, Inactive)
-  - `Active_From__c` (Date/Time)
-  - `Active_To__c` (Date/Time)
-  - `Account_Access__c` (Text)
-  - `Opportunity_Access__c` (Text)
-  - `Case_Access__c` (Text)
-  - `Contact_Access__c` (Text)
-  - `Added_By__c` (Lookup to User)
-  - `Removed_By__c` (Lookup to User)
-  - `AccountTeamMemberId__c` (Text, 18 chars)
-
-### Deploy via SFDX
-
-```bash
-sfdx force:source:deploy -p force-app/main/default/triggers
-sfdx force:source:deploy -p force-app/main/default/classes
-```
-
 ## Usage
 Account Team Member History records are automatically created and managed on insert, update or deletion of the associated Account Team Member record.
 
-Please referr to the [associated blog post] on functionality description and screenshots.
+Please referr to the [associated blog post](https://open.substack.com/pub/ilyapinchuk/p/account-team-member-history-the-audit?utm_campaign=post-expanded-share&utm_medium=web) on functionality description and screenshots.
 
 ## Architecture
 
