@@ -1,0 +1,23 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+            <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+            Org Release Version
+        </h3>
+        <lightning-layout horizontal-align="center">
+            <lightning-layout-item size="12" padding="around-small">
+                <template lwc:if={isLoading}>
+                    <lightning-spinner alternative-text="Loading org version..." size="small"></lightning-spinner>
+                </template>
+
+                <template lwc:elseif={errorMessage}>
+                    <p class="slds-p-horizontal_small slds-text-color_error">{errorMessage}</p>
+                </template>
+
+                <template lwc:else>
+                    <p class="slds-p-horizontal_small">This org is on {orgVersionLabel} Release, correlating to API Version {orgVersion}</p>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
