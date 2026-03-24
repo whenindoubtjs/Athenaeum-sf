@@ -5,6 +5,8 @@ The Salesforce Athenaeum project strives to provide viable, production-ready Sal
 | Asset | Description |
 |-------|-------------|
 | [BulkDeleteRecords](./bulk-delete-records) | Production-ready batch Apex class for safely deleting large volumes of Salesforce records with comprehensive error handling, monitoring, and configurable behavior. |
+| [Account Team History](./account-team-history) | Automatically capture and matinain an complete audit trail of Account Team Member changes. |
+| [Org Version LWC](./org-version-lwc) | Lightweight LWC that displays the current Salesforce release version and API version of the org. |
 
 ## Usage
 Each asset includes its own documentation. Navigate to the respective folder for setup instructions and implementation details.
